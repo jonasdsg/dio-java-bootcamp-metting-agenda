@@ -26,7 +26,7 @@ public class RoomService {
     }
 
     public RoomDTO save(RoomDTO dto) {
-        return roomMapper.toDTO(roomMapper.toModel(dto));
+        return roomMapper.toDTO(roomRepository.save(roomMapper.toModel(dto)));
     }
 
     public void deleteById(Long id) {
