@@ -1,6 +1,9 @@
 package com.jonasdsg.meetingsagenda.meetingsagendaback.controllers;
 
+import static java.util.Objects.nonNull;
+
 import java.net.URI;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
@@ -20,15 +23,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriBuilder;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("room")
 public class RoomController {
     @Autowired
     RoomService roomService;
     @GetMapping
-    public ResponseEntity<List<RoomDTO>> findAll(){
-        return ResponseEntity.ok().body(roomService.findAll());
+    public ResponseEntity<List<RoomDTO>> findAll(
+        @PathParam("name") String name,
+        @PathParam("startAt") String startAt,
+        @PathParam("endAt") String endAt){
+        return ResponseEntity.ok().body(
+            roomService.find(name,
+            nonNull(startAt) ? LocalDateTime.parse(startAt) : null,
+            nonNull(endAt) ? LocalDateTime.parse(endAt) : null));
     }
     
     @GetMapping("/{id}")

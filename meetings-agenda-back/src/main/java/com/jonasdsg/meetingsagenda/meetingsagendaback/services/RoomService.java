@@ -1,5 +1,6 @@
 package com.jonasdsg.meetingsagenda.meetingsagendaback.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
  
@@ -37,6 +38,10 @@ public class RoomService {
         List<RoomDTO> rooms = new ArrayList<RoomDTO>();
         roomRepository.findAll().forEach(r->rooms.add(roomMapper.toDTO(r)));
         return rooms;
+    }
+
+    public List<RoomDTO> find(String name, LocalDateTime startAt, LocalDateTime endAt) {
+        return roomMapper.toListDTO(roomRepository.find(name,startAt,endAt));
     }
 
 }
