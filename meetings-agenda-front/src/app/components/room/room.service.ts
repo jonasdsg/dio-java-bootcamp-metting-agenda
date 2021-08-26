@@ -3,14 +3,14 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-const BACKEND_URL = "http://localchost:8080";
+const BACKEND_URL = "http://localhost:8080";
 
 @Injectable({
     providedIn: 'root'
 })
 export class RoomService {
     private baseUrl: string;
-    private options:any = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*' }), };
+    private options:any = { headers: new HttpHeaders({ 'Content-Type': 'application/json', }), };
 
     constructor(private http: HttpClient) {
         this.baseUrl = BACKEND_URL + '/room';
