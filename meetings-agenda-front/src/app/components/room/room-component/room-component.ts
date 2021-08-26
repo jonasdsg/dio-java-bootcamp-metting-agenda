@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Room } from './../../../models/room.model';
 
 @Component({
@@ -31,8 +31,10 @@ export class RoomComponent implements OnChanges {
         return this.fb.group({
             id: model?.id || null,
             name: model?.name || null,
-            startAt: model?.startAt || null,
-            endAt: model?.endAt || null
+            startAt: [model?.startAt || null, Validators.pattern('((\d\d\/){2}\d{4})')],
+            endAt: model?.endAt || null,
+            stHour:null,
+            edHour:null,
         });
     }
 
