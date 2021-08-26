@@ -11,28 +11,8 @@ export class RoomPesquisaComponent {
     constructor(private roomService: RoomService) { }
     
     find(room: Room) {
-        // this.roomService.find(this.getParams(room))
-        //     .subscribe(resp => this.rooms = resp);
-        this.rooms = [
-            {
-                "id": 1,
-                "name": "SPRING",
-                "startAt": "2021-08-26T00:14:06.094",
-                "endAt": "2021-08-26T00:14:06.094"
-            },
-            {
-                "id": 2,
-                "name": "RECRUTAMENTO",
-                "startAt": "2021-08-26T00:14:06.094",
-                "endAt": "2021-08-26T00:14:06.094"
-            },
-            {
-                "id": 3,
-                "name": "ANGULAR",
-                "startAt": "2021-08-26T00:14:06.094",
-                "endAt": "2021-08-26T00:14:06.094"
-            }
-        ]
+        this.roomService.find(this.getParams(room))
+            .subscribe(resp => this.rooms = resp);
     }
 
     private getParams(room:Room){
@@ -49,6 +29,4 @@ export class RoomPesquisaComponent {
         return params;
     }
 
-    getEndingDateHour(date: string) { }
-    getStartingDateHour(date: string) { }
 }
