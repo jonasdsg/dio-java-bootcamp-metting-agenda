@@ -1,0 +1,21 @@
+<room-component nomeDoBotao="Search" nomeDaTela="Search rooms" (whenEmitRoom)="find($event)"></room-component>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Starting At</th>
+                <th scope="col">Ends At</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let room of rooms">
+                <td>{{ room.id }}</td>
+                <td>{{ room.name }}</td>
+                <td>{{ room.startAt | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td>{{ room.endAt | date:'dd/MM/yyyy HH:mm' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
