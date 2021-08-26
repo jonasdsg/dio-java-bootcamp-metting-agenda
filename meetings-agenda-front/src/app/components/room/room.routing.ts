@@ -13,7 +13,11 @@ import { RoomCadastroComponent } from './room-cadastro-component/room-cadastro-c
             {
                 path: 'cadastrar',
                 component: RoomCadastroComponent
-            }
+            },
+            {
+                path: '**',
+                redirectTo:'cadastrar'
+            },
         ])
     ]
 })
