@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @CrossOrigin
 @RestController
@@ -46,9 +46,9 @@ public class RoomController {
     }
 
     @PostMapping
-    public ResponseEntity<RoomDTO> save(@RequestBody RoomDTO dto, UriBuilder uriBuilder){
+    public ResponseEntity<RoomDTO> save(@RequestBody RoomDTO dto, UriComponentsBuilder uriBuilder){
         RoomDTO response = roomService.save(dto);
-        URI uri = uriBuilder.path("/room/{id}").build(response.id);
+        URI uri = uriBuilder.path("/room/{id}").buildAndExpand(response.id).toUri();
         return ResponseEntity.created(uri).body(response);
     }
 

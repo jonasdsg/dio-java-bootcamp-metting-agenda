@@ -39,6 +39,21 @@ export class RoomComponent implements OnChanges {
     }
 
     private getParams():Room {
-        return this.form.getRawValue();
+        //Recurso técnico para converter hora kk
+        let startAt:string = this.form.get('startAt').value;
+        let endAt:string = this.form.get('endAt').value;
+        let room:Room = this.form.getRawValue();
+
+        if(startAt){
+            let sdate:string[] = startAt.split('/');
+            let startAtFullDate:string = `${sdate[2]}-${sdate[1]}-${sdate[0]}T`+this.form.get('stHour').value;
+            room.startAt = startAtFullDate;
+        }
+        if(endAt){
+            let edate:string[] = endAt.split('/');
+            let endAtFullDate:string = `${edate[2]}-${edate[1]}-${edate[0]}T`+this.form.get('edHour').value;
+            room.endAt = endAtFullDate;
+        }
+        return room;
     }
 }

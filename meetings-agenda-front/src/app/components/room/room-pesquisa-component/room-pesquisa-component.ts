@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Room } from './../../../models/room.model';
 import { RoomService } from './../room.service';
 
@@ -6,8 +7,10 @@ import { RoomService } from './../room.service';
     templateUrl: './room-pesquisa-component.html'
 })
 export class RoomPesquisaComponent {
+    public faTrash = faTrash;
     public rooms: Room[]
-    
+    private params:any;
+
     constructor(private roomService: RoomService) { }
     
     find(room: Room) {
@@ -26,7 +29,13 @@ export class RoomPesquisaComponent {
         if(room?.endAt){
             params.endAt = room.endAt;
         }
+        this.params = params;
         return params;
     }
 
+    delete(id:number){
+        this.roomService.delete(id).subscribe(()=>{
+            this.find(this.params);
+        });
+    }
 }

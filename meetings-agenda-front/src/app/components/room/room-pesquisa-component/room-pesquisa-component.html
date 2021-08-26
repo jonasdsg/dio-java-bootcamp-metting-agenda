@@ -15,6 +15,7 @@
                 <td>{{ room.name }}</td>
                 <td>{{ room.startAt | date:'dd/MM/yyyy HH:mm' }}</td>
                 <td>{{ room.endAt | date:'dd/MM/yyyy HH:mm' }}</td>
+                <td><a class="lixeira" (click)="delete(room.id)"><fa-icon [icon]="faTrash" ></fa-icon></a></td>
             </tr>
         </tbody>
     </table>
