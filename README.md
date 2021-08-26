@@ -3,9 +3,9 @@ Solução para a proposta do bootcamp Java Developer da Digital Inovation One. A
 
 ### App criado com Angular 10 (Ivy) e SpringBoot 2.5.4
 *** A proposta é criar uma API para gestão de salas ***
--[x] cadastro de salas
--[x] listagem de salas
--[x] remoção de salas
+- [x] cadastro de salas
+- [x] listagem de salas
+- [x] remoção de salas
 
 ## Instalação
 ### Backend
